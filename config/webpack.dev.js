@@ -1,6 +1,8 @@
-const serverConfig = require("./base/webpack.server")
-const pluginConfig = require("./base/webpack.plugin")
-const path = require('path');
+const serverConfig = require("./base/server")
+const pluginConfig = require("./base/plugin")
+const staticConfig = require("./base/static")
+const resolveConfig = require("./base/resolve");
+
 
 module.exports = {
   // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
@@ -56,9 +58,27 @@ module.exports = {
 
 
   // XXX：开发服务器：webpack-dev-server（内存中）
-  devServer: serverConfig.devServer,
+  devServer: serverConfig,
+
+
+  // XXX: 使用 babel 编译模块
+  module: {
+    rules: [
+      {
+        // 直接找到对应的loader，不用一个个对比
+        oneOf: [
+          // 处理静态资源
+          ...staticConfig.rules,
+        ]
+      }
+    ]
+  },
 
 
   // XXX：使用插件
   plugins: pluginConfig.plugins,
+
+
+  // XXX：解析模块规则
+  resolve: resolveConfig
 }
