@@ -6,10 +6,11 @@
   "author": "mfr",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve --open"
+    "start": "env-cmd -f .env.development webpack serve --open",
+    "build": "env-cmd -f .env.production webpack"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "html-webpack-plugin": "^5.6.3",
     "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4",

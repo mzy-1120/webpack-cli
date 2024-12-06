@@ -1,13 +1,16 @@
 // webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {DefinePlugin} = require('webpack');
+
 
 module.exports = {
-  mode: "development",
+  mode: process.env.NODE_ENV,
   entry: './src/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   devServer: {
     static: './dist', // 静态文件目录
@@ -21,6 +24,10 @@ module.exports = {
       filename: 'index.html',
       title: 'Webpack App',
       inject: 'body' // 资源注入位置
+    }),
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
     })
   ],
 };
