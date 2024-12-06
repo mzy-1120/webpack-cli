@@ -1,6 +1,6 @@
 import {add} from '@/math'
 import Kai8 from '@/assets/images/kai-8.jpg'
-
+import './index.scss'
 
 function component() {
   const element = document.createElement('div');
@@ -13,6 +13,7 @@ function component() {
     <p>Environment: ${process.env.NODE_ENV}</p>
     <p>API URL: ${process.env.API_URL}</p>
     <img style="width: 500px" src=${Kai8} alt="">
+    <div class="contain">123</div>
   `;
   return element;
 }

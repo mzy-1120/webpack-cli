@@ -2,6 +2,8 @@ const pluginConfig = require("./base/plugin")
 const path = require("path")
 const staticConfig = require("./base/static");
 const resolveConfig = require("./base/resolve");
+const babelConfig = require("./base/babel");
+
 
 module.exports = {
   entry: "./src/index.js",
@@ -33,17 +35,7 @@ module.exports = {
 
 
   // XXX: 使用 babel 编译模块
-  module: {
-    rules: [
-      {
-        // 直接找到对应的loader，不用一个个对比
-        oneOf: [
-          // 处理静态资源
-          ...staticConfig.rules,
-        ]
-      }
-    ]
-  },
+  module: babelConfig,
 
 
   // XXX：插件
