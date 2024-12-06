@@ -6,8 +6,9 @@
   "author": "mfr",
   "license": "MIT",
   "scripts": {
-    "start": "env-cmd -f .env.development webpack serve --open",
-    "build": "env-cmd -f .env.production webpack"
+    "start": "npm run dev",
+    "dev": "env-cmd -f .env.development webpack serve --config ./config/webpack.dev.js",
+    "build": "env-cmd -f .env.production webpack --config ./config/webpack.build.js"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
