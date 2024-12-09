@@ -45,6 +45,12 @@ module.exports = {
       use: getScriptLoaders()
     },
 
+    // 处理ts文件
+    {
+      test: /\.ts$|\.tsx$/,
+      use: getScriptLoaders("ts-loader")
+    },
+
 
     // 给某个某块提供 window 对象
     // {

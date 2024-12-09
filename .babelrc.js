@@ -151,7 +151,17 @@ module.exports = {
         // 5、systemjs：将 ES 模块转换为 SystemJS 模块
         modules: false
       }
-    ]
+    ],
+
+    // Babel 提供的一个预设（preset），主要用于将 TypeScript 代码转换为 JavaScript 代码
+    // 1、语法转换
+    //   TypeScript 语法：将 TypeScript 特定的语法（如类型注解、接口、枚举等）转换为 JavaScript 语法
+    //   JSX 支持：如果需要处理 .tsx 文件，@babel/preset-typescript 可以与 @babel/preset-react 结合使用，以支持 JSX 语法
+    // 2、类型擦除
+    //   移除 TypeScript 类型注解，生成纯 JavaScript 代码。
+    // 3、与其他 Babel 预设集成
+    //   可以与其他 Babel 预设（如 @babel/preset-env）结合使用，以支持现代 JavaScript 特性并将其转换为目标环境兼容的代码
+    "@babel/preset-typescript"
   ],
   plugins: [
     [
@@ -165,6 +175,6 @@ module.exports = {
         "regenerator": true, // 启用 regenerator-runtime 的重用，支持 async/await
         "useESModules": false // 使用 CommonJS 模块语法
       }
-    ]
+    ],
   ]
 }
