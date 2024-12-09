@@ -1,5 +1,6 @@
 const staticConfig = require("./static");
 const styleConfig = require("./style");
+const scriptConfig = require("./script");
 
 
 module.exports = {
@@ -9,6 +10,10 @@ module.exports = {
       oneOf: [
         // 处理样式：css、less、sass
         ...styleConfig.style,
+
+
+        // 处理 js、ts
+        ...scriptConfig.script,
 
 
         // 处理静态资源

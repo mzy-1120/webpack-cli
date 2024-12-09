@@ -1,6 +1,5 @@
 const serverConfig = require("./base/server")
 const pluginConfig = require("./base/plugin")
-const staticConfig = require("./base/static")
 const resolveConfig = require("./base/resolve");
 const babelConfig = require("./base/babel");
 
