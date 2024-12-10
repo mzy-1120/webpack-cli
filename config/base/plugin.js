@@ -1,7 +1,8 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const {DefinePlugin} = require('webpack');
-const CopyPlugin = require("copy-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
 
 
 module.exports = {
@@ -38,6 +39,21 @@ module.exports = {
           }
         }
       ]
+    }),
+
+
+    /**
+     * XXX：全局注入模块
+     * 1、自动加载模块(如：jquery、lodash)
+     *    a：默认路径，(./**) 指向 node_modules
+     *    b：$('body').append('<div>Hello, World!</div>');
+     * 2、自定义模块：utils: path.resolve(path.join(__dirname, 'src/module1'))
+     * 3、** 如果开启 eslint，记得暴露全局变量
+     */
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      _: "lodash",
+      // Vue: ['vue/dist/vue.esm.js', 'default']
     }),
 
     // XXX：Webpack 内置插件，用户创建全局常量
