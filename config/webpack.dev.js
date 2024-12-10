@@ -2,17 +2,18 @@ const serverConfig = require("./base/server")
 const pluginConfig = require("./base/plugin")
 const resolveConfig = require("./base/resolve");
 const babelConfig = require("./base/babel");
+const path = require("path");
 
 
 module.exports = {
   // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
   entry: () => {
-    return "./src/index.js"
+    return "./src/index"
   },
 
   output: {
     // 开发环境下没有输出文件
-    path: undefined,
+    // path: path.resolve(__dirname, "../dist"),
 
     // XXX：生成文件的名称
     // 1、hash：项目级别、2、chunkhash：入口级别、3、contenthash：文件级别

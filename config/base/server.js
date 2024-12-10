@@ -1,8 +1,10 @@
+const path = require("path");
 module.exports = {
   host: "localhost", // 0.0.0.0 同局域网内可以被访问到
   port: process.env.PORT,
   open: true, // 自动打开浏览器
-  static: './dist', // 静态文件目录
+  // static: path.resolve(__dirname, "../../src"), // 静态文件目录
+  static: './src', // 静态文件目录
   /**
    * 模块热更新(默认为true)
    * 1、hot为false

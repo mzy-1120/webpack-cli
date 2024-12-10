@@ -6,7 +6,7 @@ const babelConfig = require("./base/babel");
 
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index",
   output: {
     // 绝对路径："dist" ==> "../dist"
     path: path.resolve(__dirname, "../dist"),
