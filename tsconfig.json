@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "module": "commonjs",
+    "module": "ESNext",
     "baseUrl": "./",
     "rootDir": "./src",
     "outDir": "./dist",
@@ -19,9 +19,10 @@
       "./node_modules/@types",
       "./src/types"
     ],
-    "resolveJsonModule": false,
-    "allowJs": true,
-    "checkJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "checkJs": false,
     "noEmit": false,
     "emitDeclarationOnly": false,
     "noEmitHelpers": true,
@@ -35,7 +36,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "allowImportingTsExtensions": false
+    "allowImportingTsExtensions": false,
+    "allowUmdGlobalAccess": true
   },
   "include": [
     "src/**/*"
