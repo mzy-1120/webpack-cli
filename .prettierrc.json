@@ -1,0 +1,9 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "objectCurlyNewline": "always",
+  "arrayBracketNewline": "always",
+  "htmlWhitespaceSensitivity": "strict",
+  "useTabs": false,
+  "tabWidth": 2
+}
