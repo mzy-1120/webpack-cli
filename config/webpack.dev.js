@@ -1,14 +1,19 @@
+const webpack = require("webpack");
+const path = require("path")
 const serverConfig = require("./base/server")
 const pluginConfig = require("./base/plugin")
 const resolveConfig = require("./base/resolve");
 const babelConfig = require("./base/babel");
-const path = require("path");
+const cacheConfig = require("./base/cache");
+// const externalsConfig = require("./base/externals");
+// const optimizationConfig = require("./base/optimization");
 
 
 module.exports = {
   // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
-  entry: () => {
-    return "./src/index"
+  entry: {
+    main: path.resolve(__dirname, "../src/index"),
+    another: path.resolve(__dirname, "../src/another-entry"),
   },
 
   output: {
@@ -16,18 +21,24 @@ module.exports = {
     // path: path.resolve(__dirname, "../dist"),
 
     // XXX：生成文件的名称
-    // 1、hash：项目级别、2、chunkhash：入口级别、3、contenthash：文件级别
-    filename: "static/js/[name].js",
-    chunkFilename: "static/js/[name][contenthash:8].chunk.js", // "chunk"名称、支持动态导入 import()
-    assetModuleFilename: "static/media/[contenthash:8][ext][query]", // 图片、字体等
+    // 1、hash：项目级别、
+    // 2、chunkhash：入口级别、
+    // 3、contenthash：文件级别
+    filename: "js/[name].js",
+    chunkFilename: "chunk/[chunkhash:12].js", // "chunk"名称、支持动态导入 import()
+    assetModuleFilename: "media/[contenthash:12][ext][query]", // 图片、字体等
 
     // webpack4 中使用 new CleanWebpackPlugin()
     // webpack5 中直接配置 clear
     clean: true
   },
 
+  // 设置缓存
+  // cache: cacheConfig,
 
   // XXX：模式
+  // 1、生产模式自动启用 Tree Shaking
+  // 2、确保使用 ES6 模块语法
   mode: process.env.NODE_ENV,
 
 
@@ -66,10 +77,22 @@ module.exports = {
   module: babelConfig,
 
 
-  // XXX：使用插件
-  plugins: pluginConfig.plugins,
+  // XXX：插件
+  plugins: [
+    // XXX: 引用已经生成的 DLL 文件，放在此处为了确保 context 的一致性
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require("../dist/dll/jquery-manifest.json")
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require("../dist/dll/lodash-manifest.json")
+    }),
+
+    ...pluginConfig.plugins,
+  ],
 
 
   // XXX：解析模块规则
-  resolve: resolveConfig
+  resolve: resolveConfig,
 }

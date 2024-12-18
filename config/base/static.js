@@ -42,7 +42,7 @@ module.exports = {
       type: "asset", // asset/resource ｜ asset/inline ｜ asset/resource
       parser: {
         dataUrlCondition: {
-          maxSize: 4 * 1024 // 4kb
+          maxSize: 1024 * 1024 // 1MB
         }
       },
       // // 可以在 output 统一处理

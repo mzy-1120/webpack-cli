@@ -3,8 +3,11 @@ module.exports = {
   host: "localhost", // 0.0.0.0 同局域网内可以被访问到
   port: process.env.PORT,
   open: true, // 自动打开浏览器
-  // static: path.resolve(__dirname, "../../src"), // 静态文件目录
   static: './src', // 静态文件目录
+  static: {
+    // 允许 html 文件引入 dist 下的静态资源
+    directory: path.join(__dirname, '../../dist',),
+  },
   /**
    * 模块热更新(默认为true)
    * 1、hot为false
@@ -70,13 +73,13 @@ module.exports = {
   // },
 
 
-  // 代理
-  proxy: [
-    {
-      context: ['/api'],
-      changeOrigin: true,
-      target: process.env.API_URL,
-      pathRewrite: {'^/api': ''},
-    },
-  ],
+  // // 代理
+  // proxy: [
+  //   {
+  //     context: ['/api'],
+  //     changeOrigin: true,
+  //     target: process.env.API_URL,
+  //     pathRewrite: { '^/api': '' },
+  //   },
+  // ],
 }
