@@ -1,1 +1,2 @@
+# 校验 eslint 规则
 npx lint-staged

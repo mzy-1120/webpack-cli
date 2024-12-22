@@ -1,0 +1,2 @@
+# 校验 commit 提交信息
+yarn commitlint --edit `$1`
