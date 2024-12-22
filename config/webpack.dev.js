@@ -1,22 +1,13 @@
 const webpack = require("webpack");
-const path = require("path")
-const serverConfig = require("./base/server")
-const pluginConfig = require("./base/plugin")
+const path = require("path");
+const serverConfig = require("./base/server");
+const pluginConfig = require("./base/plugin");
 const resolveConfig = require("./base/resolve");
 const babelConfig = require("./base/babel");
-const cacheConfig = require("./base/cache");
+// const cacheConfig = require("./base/cache");
+
 // const externalsConfig = require("./base/externals");
 // const optimizationConfig = require("./base/optimization");
-
-
-
-
-
-
-
-
-
-
 
 module.exports = {
   // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
@@ -39,7 +30,7 @@ module.exports = {
 
     // webpack4 中使用 new CleanWebpackPlugin()
     // webpack5 中直接配置 clear
-    clean: true
+    clean: true,
   },
 
   // 设置缓存
@@ -49,7 +40,6 @@ module.exports = {
   // 1、生产模式自动启用 Tree Shaking
   // 2、确保使用 ES6 模块语法
   mode: process.env.NODE_ENV,
-
 
   // XXX：能检测到行的报错
   // 1、内联 source-map
@@ -77,31 +67,27 @@ module.exports = {
   //       会在控制台告诉错误的内容及文件，但是点击文件名的时候看不到源码
   devtool: "cheap-module-source-map",
 
-
   // XXX：开发服务器：webpack-dev-server（内存中）
   devServer: serverConfig,
 
-
   // XXX: 使用 babel 编译模块
   module: babelConfig,
-
 
   // XXX：插件
   plugins: [
     // XXX: 引用已经生成的 DLL 文件，放在此处为了确保 context 的一致性
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dist/dll/jquery-manifest.json")
+      manifest: require("../dist/dll/jquery-manifest.json"),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dist/dll/lodash-manifest.json")
+      manifest: require("../dist/dll/lodash-manifest.json"),
     }),
 
     ...pluginConfig.plugins,
   ],
 
-
   // XXX：解析模块规则
   resolve: resolveConfig,
-}
+};

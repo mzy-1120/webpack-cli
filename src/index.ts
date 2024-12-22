@@ -3,6 +3,7 @@
 //   return item > 2; // 过滤条件
 // });
 
-const aaa = 'bb';
+const App = "bb";
+const aaa = "bb";
 
-console.log(); // 输出: [3, 4, 5]
+console.log(aaa); // 输出: [3, 4, 5];
