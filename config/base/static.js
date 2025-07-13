@@ -1,4 +1,3 @@
-// XXX：处理静态资源
 module.exports = {
   rules: [
     /**
@@ -42,8 +41,8 @@ module.exports = {
       type: "asset", // asset/resource ｜ asset/inline ｜ asset/resource
       parser: {
         dataUrlCondition: {
-          maxSize: 1024 * 1024 // 1MB
-        }
+          maxSize: 1024 * 1024, // 1MB
+        },
       },
       // // 可以在 output 统一处理
       // generator: {
@@ -59,17 +58,17 @@ module.exports = {
     // 处理其他资源
     {
       test: /\.(ttf|woff2?|mp3|mp4)$/i,
-      type: "asset/resource"
+      type: "asset/resource",
     },
     // 处理csv、xml
     {
       test: /\.(csv|tsv)$/i,
-      use: "csv-loader"
+      use: "csv-loader",
     },
     {
       test: /\.xml$/i,
-      use: "xml-loader"
-    }
+      use: "xml-loader",
+    },
 
     /**
      * 注意：如果在 webpack5 中使用了 webpack4 的配置规则
@@ -90,5 +89,5 @@ module.exports = {
     //   ],
     //   type: 'javascript/auto' // 禁用 webpack5 的默认规则
     // }
-  ]
-}
+  ],
+};

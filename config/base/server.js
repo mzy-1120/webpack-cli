@@ -3,10 +3,9 @@ module.exports = {
   host: "localhost", // 0.0.0.0 同局域网内可以被访问到
   port: process.env.PORT,
   open: true, // 自动打开浏览器
-  static: './src', // 静态文件目录
   static: {
     // 允许 html 文件引入 dist 下的静态资源
-    directory: path.join(__dirname, '../../dist',),
+    directory: path.join(__dirname, "../../dist"),
   },
   /**
    * 模块热更新(默认为true)
@@ -30,7 +29,6 @@ module.exports = {
    */
   hot: true,
 
-
   // XXX：主要用于在开发环境中处理 HTML5 History API 的路由。
   //  1、当使用单页应用框架（如 React Router、Vue Router）时，路由通常是基于 URL 的路径，而不是传统的带有 # 的锚点（例如 /#!/about）。
   //  2、当用户直接访问这些路径时，服务器需要返回一个 HTML 文件（通常是 index.html），而不是返回 404 错误。
@@ -42,7 +40,6 @@ module.exports = {
   //   ]
   // },
   historyApiFallback: true, // 解决history路由页面刷新404问题
-
 
   // XXX：配置https
   // https: true,
@@ -56,12 +53,10 @@ module.exports = {
   //   requestCert: true
   // },
 
-
   // XXX：设置请求头
   // headers: {
   //   'X-Custom-Foo': 'bar'
   // },
-
 
   // 拦截接口
   // before: function (app) {
@@ -72,7 +67,6 @@ module.exports = {
   //   })
   // },
 
-
   // // 代理
   // proxy: [
   //   {
@@ -82,4 +76,4 @@ module.exports = {
   //     pathRewrite: { '^/api': '' },
   //   },
   // ],
-}
+};

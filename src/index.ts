@@ -1,9 +1,6 @@
-// const array = [1, 2, 3, 4, 5];
-// const filteredArray = $.grep(array, function (item) {
-//   return item > 2; // 过滤条件
-// });
+import { fnA } from "./utils/a";
+import { fnB } from "./utils/b";
 
-const App = "bb";
-const aaa = "bb";
+fnA();
 
-console.log(aaa); // 输出: [3, 4, 5];
+fnB();

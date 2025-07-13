@@ -13,7 +13,7 @@ module.exports = {
   // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
   entry: {
     main: path.resolve(__dirname, "../src/index"),
-    another: path.resolve(__dirname, "../src/another-entry"),
+    other: path.resolve(__dirname, "../src/other"),
   },
 
   output: {
